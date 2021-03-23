@@ -9,9 +9,15 @@ import {
   serial_new,
   serial_read,
   serial_read_all,
+  serial_read_carrier_detect,
+  serial_read_clear_to_send,
+  serial_read_data_set_ready,
+  serial_read_ring_indicator,
   serial_set_baud_rate,
   serial_set_break,
   serial_write,
+  serial_write_data_terminal_ready,
+  serial_write_request_to_send,
 } from "./ops.ts";
 
 export interface SerialUsbInfo {
@@ -93,6 +99,30 @@ export class Serial {
 
   setBaudRate(rate: number) {
     return serial_set_baud_rate(this.rid, rate);
+  }
+
+  writeDataTerminalReady(level: number) {
+    serial_write_data_terminal_ready(this.rid, level);
+  }
+
+  writeRequestToSend(level: number) {
+    serial_write_request_to_send(this.rid, level);
+  }
+
+  readCarrierDetect() {
+    return serial_read_carrier_detect(this.rid);
+  }
+
+  readClearToSend() {
+    return serial_read_clear_to_send(this.rid);
+  }
+
+  readDataSetReady() {
+    return serial_read_data_set_ready(this.rid);
+  }
+
+  readRingIndicator() {
+    return serial_read_ring_indicator(this.rid);
   }
 
   close() {

@@ -109,3 +109,35 @@ export function serial_clear_break(id: number) {
 export function serial_set_baud_rate(id: number, rate: number) {
   dispatch(op_serial_set_baud_rate, id, rate);
 }
+
+export function serial_write_data_terminal_ready(id: number, level: number) {
+  dispatch(op_serial_write_data_terminal_ready, id, level);
+}
+
+export function serial_write_request_to_send(id: number, level: number) {
+  dispatch(op_serial_write_request_to_send, id, level);
+}
+
+export function serial_read_clear_to_send(id: number) {
+  const res = dispatchString(op_serial_read_clear_to_send, id);
+  if (res !== "0" && res !== "1") throw new Error("Invalid signal");
+  return res === "0";
+}
+
+export function serial_read_carrier_detect(id: number) {
+  const res = dispatchString(op_serial_read_carrier_detect, id);
+  if (res !== "0" && res !== "1") throw new Error("Invalid signal");
+  return res === "0";
+}
+
+export function serial_read_ring_indicator(id: number) {
+  const res = dispatchString(op_serial_read_ring_indicator, id);
+  if (res !== "0" && res !== "1") throw new Error("Invalid signal");
+  return res === "0";
+}
+
+export function serial_read_data_set_ready(id: number) {
+  const res = dispatchString(op_serial_read_data_set_ready, id);
+  if (res !== "0" && res !== "1") throw new Error("Invalid signal");
+  return res === "0";
+}

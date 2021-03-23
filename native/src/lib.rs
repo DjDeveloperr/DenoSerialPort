@@ -372,13 +372,13 @@ fn op_serial_read_clear_to_send(_interface: &mut dyn Interface, args: &mut [Zero
             let mut res = b"1";
             let r = target.read_clear_to_send();
             if r.is_err() {
-                res = b"0";
+                res = b"e";
             } else {
                 res = if r.unwrap() == true { b"0" } else { b"1" };
             }
             Op::Sync(res.to_vec().into_boxed_slice())
         } else {
-            let res = b"1";
+            let res = b"n";
             Op::Sync(res.to_vec().into_boxed_slice())
         }
     })
@@ -412,13 +412,13 @@ fn op_serial_read_ring_indicator(_interface: &mut dyn Interface, args: &mut [Zer
             let mut res = b"1";
             let r = target.read_ring_indicator();
             if r.is_err() {
-                res = b"0";
+                res = b"e";
             } else {
                 res = if r.unwrap() == true { b"0" } else { b"1" };
             }
             Op::Sync(res.to_vec().into_boxed_slice())
         } else {
-            let res = b"1";
+            let res = b"n";
             Op::Sync(res.to_vec().into_boxed_slice())
         }
     })
@@ -432,13 +432,13 @@ fn op_serial_read_carrier_detect(_interface: &mut dyn Interface, args: &mut [Zer
             let mut res = b"1";
             let r = target.read_carrier_detect();
             if r.is_err() {
-                res = b"0";
+                res = b"e";
             } else {
                 res = if r.unwrap() == true { b"0" } else { b"1" };
             }
             Op::Sync(res.to_vec().into_boxed_slice())
         } else {
-            let res = b"1";
+            let res = b"n";
             Op::Sync(res.to_vec().into_boxed_slice())
         }
     })
