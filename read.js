@@ -1,0 +1,1 @@
+console.log(Deno.readFileSync("\\\\.\\COM3"))
