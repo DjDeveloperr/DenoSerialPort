@@ -4,9 +4,13 @@ import {
   serial_bytes_to_read,
   serial_bytes_to_write,
   serial_clear,
+  serial_clear_break,
+  serial_close,
   serial_new,
   serial_read,
   serial_read_all,
+  serial_set_baud_rate,
+  serial_set_break,
   serial_write,
 } from "./ops.ts";
 
@@ -79,5 +83,19 @@ export class Serial {
     return serial_bytes_to_write(this.rid);
   }
 
-  close() {}
+  setBreak() {
+    return serial_set_break(this.rid);
+  }
+
+  clearBreak() {
+    return serial_clear_break(this.rid);
+  }
+
+  setBaudRate(rate: number) {
+    return serial_set_baud_rate(this.rid, rate);
+  }
+
+  close() {
+    return serial_close(this.rid);
+  }
 }

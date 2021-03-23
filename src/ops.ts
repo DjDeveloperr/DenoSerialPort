@@ -105,3 +105,7 @@ export function serial_set_break(id: number) {
 export function serial_clear_break(id: number) {
   dispatch(op_serial_clear_break, id);
 }
+
+export function serial_set_baud_rate(id: number, rate: number) {
+  dispatch(op_serial_set_baud_rate, id, rate);
+}
