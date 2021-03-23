@@ -1,5 +1,7 @@
 import { Serial, SerialClearType } from "./mod.ts";
 
+console.log(Serial.availablePorts());
+
 const serial = new Serial("COM7", 9600);
 serial.clear(SerialClearType.All);
 

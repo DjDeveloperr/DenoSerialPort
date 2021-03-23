@@ -20,6 +20,13 @@ import {
   serial_write_request_to_send,
 } from "./ops.ts";
 
+export enum SerialPortType {
+  Pci = 1,
+  Usb,
+  Bluetooth,
+  Unknown,
+}
+
 export interface SerialUsbInfo {
   vendorId: number;
   productId: number;
@@ -30,7 +37,7 @@ export interface SerialUsbInfo {
 
 export interface SerialPortInfo {
   name: string;
-  type: number;
+  type: SerialPortType;
   usbInfo?: SerialUsbInfo;
 }
 
@@ -41,7 +48,7 @@ export class Serial {
     return available_ports().map((e: any) => {
       const data: SerialPortInfo = {
         name: e.name,
-        type: e.type,
+        type: e.port_type,
       };
 
       if (e.usb_info)

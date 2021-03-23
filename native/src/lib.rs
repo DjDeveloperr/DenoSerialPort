@@ -15,7 +15,7 @@ thread_local! {
 #[derive(Serialize)]
 struct OpSerialPort {
     name: String,
-    port_type: i32,
+    port_type: u8,
     usb_info: Option<OpUsbPortInfo>,
 }
 
